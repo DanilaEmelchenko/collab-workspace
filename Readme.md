@@ -150,6 +150,7 @@ pytest --e2e       # Integration tests
 ```
 
 ### 🗺 Roadmap
+```bash
 Project setup & architecture
 Authentication (JWT)
 Workspace CRUD
@@ -161,6 +162,7 @@ AI integration (OpenAI)
 File attachments
 Comments & mentions
 Mobile responsive
+```
 
 ### 📸 Screenshots
 Coming soon...
@@ -173,5 +175,4 @@ MIT © Danila, Elena
 <div align="center">
 
 ### Built with ❤️ for learning and showcasing modern web development
-⬆ Back to top
 </div>
