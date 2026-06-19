@@ -63,31 +63,6 @@ Built to demonstrate expertise in:
 - **Linting:** ESLint + Prettier (JS) | Ruff + Mypy (Python)
 - **Git Hooks:** Husky + lint-staged + pre-commit
 
-## 🏗 Architecture
-┌─────────────────────────────────────────────────────────┐
-│ Frontend (Next.js) │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
-│ │ Editor │ │ Dashboard │ │ Settings │ │
-│ │ (TipTap+Yjs)│ │ │ │ │ │
-│ └──────────────┘ └──────────────┘ └──────────────┘ │
-└────────────────────────┬────────────────────────────────┘
-│ WebSocket / REST API
-▼
-┌─────────────────────────────────────────────────────────┐
-│ Backend (FastAPI) │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
-│ │ REST API │ │ WebSocket │ │ AI Service │ │
-│ │ (OpenAPI) │ │ (y-py sync) │ │ (Optional) │ │
-│ └──────────────┘ └──────────────┘ └──────────────┘ │
-└────────────────────────┬────────────────────────────────┘
-│
-┌────────────────┼────────────────┐
-▼ ▼ ▼
-┌─────────┐ ┌─────────┐ ┌─────────┐
-│PostgreSQL│ │ Redis │ │ S3 │
-│ (Data) │ │(PubSub) │ │ (Media) │
-└─────────┘ └─────────┘ └─────────┘
-
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -100,27 +75,37 @@ Built to demonstrate expertise in:
 ```bash
 git clone https://github.com/YOUR_USERNAME/collab-workspace.git
 cd collab-workspace
+```
 
-2. Start infrastructure
+### 2. Start infrastructure
+```bash
 docker-compose up -d
+```
 
-3. Setup Backend
+### 3. Setup Backend
+```bash
 cd apps/server
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 alembic upgrade head
 uvicorn app.main:app --reload
+```
 
-4. Setup Frontend
+### 4. Setup Frontend
+```bash
 cd apps/web
-pnpm install
-pnpm dev
+npm install
+npm run dev
+```
 
-5. Open the app
+### 5. Open the app
+```bash
 Visit http://localhost:3000
+```
 
-📂 Project Structure
+### 📂 Project Structure
+```bash
 collab-workspace/
 ├── apps/
 │   ├── web/                    # Next.js frontend (FSD)
@@ -147,19 +132,24 @@ collab-workspace/
 ├── docker-compose.yml
 ├── .github/workflows/          # CI/CD
 └── README.md
+```
 
-🧪 Testing
+### 🧪 Testing
+```bash
 # Frontend tests
 cd apps/web
-pnpm test          # Unit tests (Vitest)
-pnpm test:e2e      # E2E tests (Playwright)
+npm run test          # Unit tests (Vitest)
+npm run test:e2e      # E2E tests (Playwright)
+```
 
 # Backend tests
+```bash
 cd apps/server
 pytest             # Unit tests
 pytest --e2e       # Integration tests
+```
 
-🗺 Roadmap
+### 🗺 Roadmap
 Project setup & architecture
 Authentication (JWT)
 Workspace CRUD
@@ -172,17 +162,16 @@ File attachments
 Comments & mentions
 Mobile responsive
 
-📸 Screenshots
+### 📸 Screenshots
 Coming soon...
 <!-- Add screenshots here when ready -->
 
-🤝 Contributing
+### 🤝 Contributing
 This is a portfolio project, but feedback is welcome! Feel free to open an issue or PR.
 📄 License
 MIT © Danila, Elena
 <div align="center">
 
-Built with ❤️ for learning and showcasing modern web development
+### Built with ❤️ for learning and showcasing modern web development
 ⬆ Back to top
 </div>
-```
