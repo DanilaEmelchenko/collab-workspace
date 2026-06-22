@@ -1,88 +1,88 @@
 # 🚀 Collab Workspace
 
-> Real-time collaborative workspace with AI-powered features, built with modern web technologies.
+> Коллаборативное рабочее пространство реального времени с AI-функциями, построенное на современных веб-технологиях.
 
 ![Status](https://img.shields.io/badge/status-in%20development-orange)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-green)
 
-## 📖 About
+## 📖 О проекте
 
-Collab Workspace is a production-grade collaborative editing platform inspired by Notion and Google Docs. It features real-time synchronization, offline-first capabilities, and AI-powered content generation.
+Collab Workspace — это коллаборативная платформа для редактирования документов, вдохновлённая Notion и Google Docs. Она поддерживает синхронизацию в реальном времени, работу офлайн и генерацию контента с помощью ИИ.
 
-Built to demonstrate expertise in:
-- **Real-time collaboration** using CRDT (Yjs)
-- **Full-stack TypeScript/Python** architecture
-- **Modern DevOps practices** (Docker, CI/CD, testing)
-- **AI integration** (OpenAI/LangChain ready)
+Проект создан для демонстрации экспертизы в:
+- **Коллаборации в реальном времени с использованием CRDT (Yjs)
+- **Full-stack архитектуре TypeScript/Python
+- **Современных DevOps практиках (Docker, CI/CD, тестирование)
+- **Интеграции ИИ (готовность к OpenAI/LangChain)
 
-## ✨ Features
+## ✨ Возможности
 
-### Core
-- 📝 **Rich Text Editor** — TipTap-based with markdown support
-- 🔄 **Real-time Sync** — Instant updates across all connected clients
-- 👥 **Presence** — See who's viewing/editing with live cursors
-- 💾 **Offline-first** — Continue working without internet, auto-sync when back online
-- 🏢 **Workspaces** — Organize documents into collaborative spaces
+### Основные
+- 📝 **Редактор форматированного текста — на базе TipTap с поддержкой Markdown
+- 🔄 **Синхронизация в реальном времени — мгновенное обновление у всех подключённых клиентов
+- 👥 **Присутствие — видно, кто просматривает/редактирует документ, с живыми курсорами
+- 💾 **Офлайн-режим — продолжайте работать без интернета, автосинхронизация при восстановлении связи
+- 🏢 **Рабочие пространства — организация документов в коллаборативные пространства
 
-### Technical
-- ⚡ **CRDT-powered** — Conflict-free merging with Yjs
-- 🔐 **Authentication** — Secure JWT-based auth
-- 🎨 **Modern UI** — Tailwind CSS + shadcn/ui
-- 📊 **Type-safe** — End-to-end TypeScript with OpenAPI codegen
-- 🐳 **Docker-ready** — One-command local setup
+### Технические
+- ⚡ **На базе CRDT — бесконфликтное слияние с помощью Yjs
+- 🔐 **Аутентификация — безопасная JWT-аутентификация
+- 🎨 **Современный UI — Tailwind CSS + shadcn/ui
+- 📊 **Типобезопасность — End-to-end TypeScript с генерацией из OpenAPI
+- 🐳 **Готов к Docker — запуск локально одной командой
 
-### AI (Coming Soon)
-- 🤖 **AI Assistant** — Generate, summarize, and transform content
-- 💡 **Smart Suggestions** — Context-aware autocomplete
+### ИИ (Скоро)
+- 🤖 **AI-ассистент — генерация, суммаризация и преобразование контента
+- 💡 **Умные подсказки — контекстное автодополнение
 - 🌐 **Multi-language** — Real-time translation
 
-## 🛠 Tech Stack
+## 🛠 Технологический стек
 
 ### Frontend
-- **Framework:** Next.js 15 (App Router) + React 19
-- **Language:** TypeScript 5.3
-- **Styling:** Tailwind CSS v4 + shadcn/ui
-- **Editor:** TipTap + Yjs (CRDT)
-- **State:** Zustand + React Query
-- **Architecture:** Feature-Sliced Design (FSD)
+- **Фреймворк:** Next.js 15 (App Router) + React 19
+- **Язык:** TypeScript 5.3
+- **Стилизация:** Tailwind CSS v4 + shadcn/ui
+- **Редактор:** TipTap + Yjs (CRDT)
+- **Состояние:** Zustand + React Query
+- **Архитектура:** Feature-Sliced Design (FSD)
 
 ### Backend
-- **Framework:** FastAPI (Python 3.11+)
+- **Фреймворк:** FastAPI (Python 3.11+)
 - **Real-time:** WebSocket + Socket.io
-- **Database:** PostgreSQL 16 + SQLAlchemy 2.0 (async)
-- **Cache/PubSub:** Redis 7
+- **База данных:** PostgreSQL 16 + SQLAlchemy 2.0 (async)
+- **Кэш/PubSub:** Redis 7
 - **CRDT:** y-py (Python Yjs implementation)
-- **Validation:** Pydantic v2
+- **Валидация:** Pydantic v2
 
-### DevOps & Quality
-- **Containerization:** Docker + docker-compose
+### DevOps и качество
+- **Контейнеризация:** Docker + docker-compose
 - **CI/CD:** GitHub Actions
-- **Testing:** Vitest (Unit) + Playwright (E2E) + Pytest
-- **Linting:** ESLint + Prettier (JS) | Ruff + Mypy (Python)
-- **Git Hooks:** Husky + lint-staged + pre-commit
+- **Тестирование:** Vitest (Unit) + Playwright (E2E) + Pytest
+- **Линтеры:** ESLint + Prettier (JS) | Ruff + Mypy (Python)
+- **Git-хуки:** Husky + lint-staged + pre-commit
 
-## 🚀 Quick Start
+## 🚀 Быстрый старт
 
-### Prerequisites
+### Требования
 - Docker & Docker Compose
 - Node.js 20+
 - Python 3.11+
 - npm
 
-### 1. Clone the repository
+### 1. Клонируйте репозиторий
 ```bash
 git clone https://github.com/YOUR_USERNAME/collab-workspace.git
 cd collab-workspace
 ```
 
-### 2. Start infrastructure
+### 2. Запустите инфраструктуру
 ```bash
 docker-compose up -d
 ```
 
-### 3. Setup Backend
+### 3. Настройте Backend
 ```bash
 cd apps/server
 python -m venv venv
@@ -92,9 +92,8 @@ alembic upgrade head
 uvicorn app.main:app --reload
 ```
 
-### 4. Setup Frontend
+### 4. Настройте Frontend
 ```bash
-cd apps/web
 npm install
 npm run dev
 ```
@@ -108,48 +107,48 @@ Visit http://localhost:3000
 ```bash
 collab-workspace/
 ├── apps/
-│   ├── web/                    # Next.js frontend (FSD)
-│   │   ├── app/                # App Router pages
-│   │   ├── processes/          # App-wide logic
-│   │   ├── widgets/            # Composite blocks
-│   │   ├── features/           # User features
-│   │   ├── entities/           # Business entities
-│   │   └── shared/             # Reusable code
+│   ├── web/                    # Next.js фронтенд (FSD)
+│   │   ├── app/                # Страницы App Router
+│   │   ├── widgets/            # Составные блоки
+│   │   ├── features/           # Пользовательские фичи
+│   │   ├── entities/           # Бизнес-сущности
+│   │   └── shared/             # Переиспользуемый код
 │   │
-│   └── server/                 # FastAPI backend
+│   └── server/                 # FastAPI бэкенд
 │       ├── app/
-│       │   ├── api/            # REST endpoints
-│       │   ├── ws/             # WebSocket handlers
-│       │   ├── core/           # Config, security
-│       │   ├── db/             # Database models
-│       │   └── services/       # Business logic
+│       │   ├── api/            # REST эндпоинты
+│       │   ├── ws/             # WebSocket обработчики
+│       │   ├── core/           # Конфигурация, безопасность
+│       │   ├── db/             # Модели базы данных
+│       │   └── services/       # Бизнес-логика
 │       └── tests/
 │
 ├── packages/
-│   ├── ui/                     # Shared UI components
-│   └── config/                 # Shared configs
+│   ├── ui/                     # Общие UI компоненты
+│   └── config/                 # Общие конфигурации
 │
 ├── docker-compose.yml
 ├── .github/workflows/          # CI/CD
 └── README.md
 ```
 
-### 🧪 Testing
-```bash
+### 🧪 Тестирование
+
 # Frontend tests
+```bash
 cd apps/web
-npm run test          # Unit tests (Vitest)
-npm run test:e2e      # E2E tests (Playwright)
+npm run test          # Unit тесты (Vitest)
+npm run test:e2e      # E2E тесты (Playwright)
 ```
 
 # Backend tests
 ```bash
 cd apps/server
-pytest             # Unit tests
-pytest --e2e       # Integration tests
+pytest             # Unit тесты
+pytest --e2e       # Интеграционные тесты
 ```
 
-### 🗺 Roadmap
+### 🗺 Дорожная карта
 ```bash
 Project setup & architecture
 Authentication (JWT)
@@ -164,15 +163,14 @@ Comments & mentions
 Mobile responsive
 ```
 
-### 📸 Screenshots
-Coming soon...
-<!-- Add screenshots here when ready -->
+### 📸 Скриншоты
+Скоро...
 
-### 🤝 Contributing
-This is a portfolio project, but feedback is welcome! Feel free to open an issue or PR.
-📄 License
-MIT © Danila, Elena
+### 🤝 Участие в проекте
+Это портфолийный проект, но обратная связь приветствуется! Создавайте issue или PR.
+📄 Лицензия
+MIT © Данила, Елена
 <div align="center">
 
-### Built with ❤️ for learning and showcasing modern web development
+### Создано с ❤️ для обучения и демонстрации современной веб-разработки
 </div>
