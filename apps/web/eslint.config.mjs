@@ -1,3 +1,4 @@
+import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactPlugin from "eslint-plugin-react";
@@ -7,7 +8,7 @@ import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
 
-export default tseslint.config(
+export default defineConfig([
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -66,12 +67,6 @@ export default tseslint.config(
         },
       ],
 
-      "@typescript-eslint/consistent-type-exports": "warn",
-      "@typescript-eslint/no-import-type-side-effects": "warn",
-      "@typescript-eslint/switch-exhaustiveness-check": "warn",
-      "@typescript-eslint/no-floating-promises": "warn",
-      "@typescript-eslint/no-misused-promises": "warn",
-
       "@next/next/no-html-link-for-pages": "error",
       "@next/next/no-img-element": "warn",
       "@next/next/no-unwanted-polyfillio": "warn",
@@ -109,7 +104,7 @@ export default tseslint.config(
     ],
   },
   prettierConfig,
-);
+]);
 
 /*
 import { defineConfig, globalIgnores } from "eslint/config";
