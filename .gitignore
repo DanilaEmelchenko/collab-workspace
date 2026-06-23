@@ -60,12 +60,15 @@ yarn-error.log*
 *.tsbuildinfo
 **/tsconfig.tsbuildinfo
 next-env.d.ts
-**/next-env.d.ts
+**/next-env.d.tsnpx browserslist
 
-# IDE &编辑器
+# IDE & редакторы
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-Thumbs.db#
+Thumbs.db
+
+# browserslist (не нужно игнорировать, но если есть локальные копии)
+.browserslistrc.local
