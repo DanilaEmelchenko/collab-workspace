@@ -13,7 +13,7 @@ concurrency:
 jobs:
   # FRONTEND JOBS
   frontend-lint-and-format:
-    name: Lint & Format
+    name: Frontend: Lint & Format
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,7 +41,7 @@ jobs:
         run: npm run format:check
 
   frontend-typecheck:
-    name: TypeScript Check
+    name: Frontend: TypeScript Check
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -66,7 +66,7 @@ jobs:
         run: npx tsc --noEmit
 
   frontend-build:
-    name: Build App
+    name: Frontend: Build App
     runs-on: ubuntu-latest
     needs: [frontend-lint-and-format, frontend-typecheck]
     defaults:
@@ -95,7 +95,7 @@ jobs:
 
   # BACKEND JOBS
   python-lint:
-    name: Lint & Format (Ruff)
+    name: Backend: Lint & Format (Ruff)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -120,7 +120,7 @@ jobs:
         run: ruff format --check .
 
   python-typecheck:
-    name: Type Check (Mypy)
+    name: Backend: Type Check (Mypy)
     runs-on: ubuntu-latest
     defaults:
       run:
