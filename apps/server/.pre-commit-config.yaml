@@ -1,0 +1,50 @@
+repos:
+  # Ruff - линтер и форматтер
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.1
+    hooks:
+      # Запуск линтера
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        files: ^apps/server/
+
+      # Запуск форматтера
+      - id: ruff-format
+        files: ^apps/server/
+
+  # Mypy - проверка типов
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.14.1
+    hooks:
+      - id: mypy
+        files: ^apps/server/
+        additional_dependencies:
+          - types-redis
+          - types-passlib
+        args: [--config-file=apps/server/pyproject.toml]
+        exclude: ^apps/server/tests/
+
+  # Базовые хуки
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Удаление trailing whitespace
+      - id: trailing-whitespace
+        files: ^apps/server/
+
+      # Добавление пустой строки в конец файла
+      - id: end-of-file-fixer
+        files: ^apps/server/
+
+      # Проверка валидности YAML
+      - id: check-yaml
+        files: ^apps/server/
+
+      # Проверка валидности JSON
+      - id: check-json
+        files: ^apps/server/
+
+      # Проверка добавления больших файлов
+      - id: check-added-large-files
+        files: ^apps/server/
+        args: ['--maxkb=1000']

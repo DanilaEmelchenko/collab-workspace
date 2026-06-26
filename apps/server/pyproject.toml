@@ -1,0 +1,104 @@
+[project]
+name = "collab-workspace-server"
+version = "0.1.0"
+description = "Backend for Collab Workspace"
+requires-python = ">=3.13"
+
+[tool.ruff]
+# Целевая версия Python
+target-version = "py313"
+
+# Максимальная длина строки
+line-length = 100
+
+# Какие файлы проверять
+include = ["*.py", "*.pyi"]
+
+# Какие файлы игнорировать
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[tool.ruff.lint]
+# Какие правила включить
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort (сортировка импортов)
+    "N",      # pep8-naming
+    "UP",     # pyupgrade (обновление синтаксиса)
+    "B",      # flake8-bugbear (поиск багов)
+    "SIM",    # flake8-simplify (упрощение кода)
+    "TCH",    # flake8-type-checking (проверка типов)
+    "RUF",    # ruff-specific rules
+]
+
+# Какие правила игнорировать
+ignore = [
+    "E501",   # line too long (управляется line-length)
+    "B008",   # do not perform function calls in argument defaults (FastAPI Depends)
+]
+
+# Автоматически исправлять ошибки
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.isort]
+# Сортировка импортов
+known-first-party = ["app"]
+combine-as-imports = true
+
+[tool.ruff.format]
+# Форматирование (аналог black)
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+
+[tool.mypy]
+# Строгая проверка типов
+strict = true
+
+# Целевая версия Python
+python_version = "3.13"
+
+# Игнорировать отсутствующие импорты (для внешних библиотек без типов)
+ignore_missing_imports = true
+
+# Проверять тела функций
+check_untyped_defs = true
+
+# Требовать аннотации типов для всех функций
+disallow_untyped_defs = true
+
+# Требовать аннотации типов для всех вызовов
+disallow_untyped_calls = true
+
+# Запрещать неявные Optional
+no_implicit_optional = true
+
+# Предупреждать о неиспользуемых ignore
+warn_unused_ignores = true
+
+# Предупреждать о возврате None
+warn_return_any = true
+
+# НЕ требовать типизацию для декораторов (FastAPI)
+disallow_untyped_decorators = false
+
+# Исключения для конкретных файлов
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+# Исключения для SQLAlchemy и Pydantic
+[[tool.mypy.overrides]]
+module = ["sqlalchemy.*", "pydantic.*", "pydantic_settings.*"]
+follow_imports = "skip"

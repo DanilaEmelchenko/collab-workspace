@@ -1,9 +1,11 @@
 from redis.asyncio import Redis
+
 from app.core.config import settings
 
-redis_client: Redis | None = None
+redis_client: Redis[str] | None = None
 
-async def get_redis() -> Redis:
+
+async def get_redis() -> Redis[str]:
     global redis_client
     if redis_client is None:
         redis_client = Redis.from_url(
@@ -12,6 +14,7 @@ async def get_redis() -> Redis:
             decode_responses=True,
         )
     return redis_client
+
 
 async def close_redis() -> None:
     global redis_client
