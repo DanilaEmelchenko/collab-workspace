@@ -12,7 +12,7 @@ router = APIRouter()
 @router.get("")
 async def health_check(
     db: AsyncSession = Depends(get_session),
-    redis: Redis = Depends(get_redis),  # type: ignore[type-arg]
+    redis: Redis = Depends(get_redis),
 ) -> dict[str, str]:
     """Check health of all services."""
     # Check DB
