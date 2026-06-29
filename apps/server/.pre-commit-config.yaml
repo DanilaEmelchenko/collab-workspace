@@ -22,7 +22,6 @@ repos:
           - types-redis
           - types-passlib
         args: [--config-file=apps/server/pyproject.toml]
-        exclude: ^apps/server/tests/
 
   # Базовые хуки
   - repo: https://github.com/pre-commit/pre-commit-hooks

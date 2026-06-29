@@ -15,7 +15,9 @@
     "format": "npm run format --workspace=web",
     "format:check": "npm run format:check --workspace=web",
     "typecheck": "npm run typecheck --workspace=web",
-    "prepare": "husky"
+    "typecheck:backend": "cd apps/server && python -m mypy .",
+    "prepare": "husky",
+    "pre-commit": "npm run lint-staged && npm run typecheck:backend"
   },
   "lint-staged": {
     "apps/web/**/*.{js,jsx,ts,tsx}": [
@@ -24,6 +26,10 @@
     ],
     "apps/web/**/*.{json,css,md}": [
       "prettier --write"
+    ],
+    "apps/server/**/*.py": [
+      "ruff check --fix",
+      "ruff format"
     ]
   },
   "devDependencies": {

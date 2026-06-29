@@ -1,2 +1,1 @@
-npx lint-staged
-python -m pre_commit run --all-files --config apps/server/.pre-commit-config.yaml
+npm run pre-commit
