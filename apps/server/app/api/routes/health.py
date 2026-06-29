@@ -15,14 +15,12 @@ async def health_check(
     redis: Redis = Depends(get_redis),
 ) -> dict[str, str]:
     """Check health of all services."""
-    # Check DB
     try:
         await db.execute(text("SELECT 1"))
         db_status = "ok"
     except Exception:
         db_status = "error"
 
-    # Check Redis
     try:
         await redis.ping()
         redis_status = "ok"

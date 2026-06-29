@@ -1,1 +1,2 @@
-cd C:\Users\us\dev\collab-workspace\apps\server
+-r requirements.txt
+pre-commit==4.0.1
