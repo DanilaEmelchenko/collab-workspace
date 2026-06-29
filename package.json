@@ -17,7 +17,7 @@
     "typecheck": "npm run typecheck --workspace=web",
     "typecheck:backend": "cd apps/server && python -m mypy .",
     "prepare": "husky",
-    "pre-commit": "npm run lint-staged && npm run typecheck:backend"
+    "pre-commit": "npx lint-staged && npm run typecheck:backend"
   },
   "lint-staged": {
     "apps/web/**/*.{js,jsx,ts,tsx}": [
