@@ -92,7 +92,7 @@ docker-compose up -d
 cd apps/server
 python -m venv venv
 source venv/bin/activate  # On Windows: venv/Scripts/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 alembic upgrade head
 python run.py
 ```
