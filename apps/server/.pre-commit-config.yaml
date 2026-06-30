@@ -19,8 +19,8 @@ repos:
       - id: mypy
         files: ^apps/server/
         additional_dependencies:
-          - types-redis
           - types-passlib
+          - redis==5.2.1
         args: [--config-file=apps/server/pyproject.toml]
 
   # Базовые хуки
