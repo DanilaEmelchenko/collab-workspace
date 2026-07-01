@@ -44,6 +44,8 @@ select = [
 ignore = [
     "E501",   # line too long (управляется line-length)
     "B008",   # do not perform function calls in argument defaults (FastAPI Depends)
+    "B008",   # do not perform function calls in argument defaults
+    "RUF002", # отключаем проверку на неоднозначные unicode-символы (т.к. пишем докстринги на русском)
 ]
 
 # Автоматически исправлять ошибки
@@ -102,3 +104,8 @@ disallow_untyped_defs = false
 [[tool.mypy.overrides]]
 module = ["sqlalchemy.*", "pydantic.*", "pydantic_settings.*"]
 follow_imports = "skip"
+
+# Полностью отключаем проверку типов для Alembic (автогенерируемый код)
+[[tool.mypy.overrides]]
+module = ["alembic.*", "alembic"]
+ignore_errors = true
