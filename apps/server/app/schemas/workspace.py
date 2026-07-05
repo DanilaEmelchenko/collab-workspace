@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from pydantic import BaseModel
 
 
@@ -11,8 +13,8 @@ class WorkspaceCreate(BaseModel):  # type: ignore[misc]
 class WorkspaceRead(BaseModel):  # type: ignore[misc]
     """Схема для чтения воркспейса."""
 
-    id: str
+    id: UUID
     name: str
-    owner_id: str
+    owner_id: UUID
 
     model_config = {"from_attributes": True}

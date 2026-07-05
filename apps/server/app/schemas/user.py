@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from pydantic import BaseModel
 
 
@@ -11,7 +13,7 @@ class UserCreate(BaseModel):  # type: ignore[misc]
 class UserRead(BaseModel):  # type: ignore[misc]
     """Схема для чтения пользователя (исходящие данные)."""
 
-    id: str
+    id: UUID
     email: str
     is_active: bool
 
