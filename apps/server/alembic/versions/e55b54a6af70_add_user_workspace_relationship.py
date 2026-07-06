@@ -1,7 +1,7 @@
 """add user-workspace relationship
 
 Revision ID: e55b54a6af70
-Revises: 9d700f688b39
+Revises: ed4a80e8f7ba
 Create Date: 2026-07-06 12:31:44.605827
 
 """
@@ -10,7 +10,7 @@ from collections.abc import Sequence
 
 # revision identifiers, used by Alembic.
 revision: str = "e55b54a6af70"
-down_revision: str | None = "9d700f688b39"
+down_revision: str | None = "ed4a80e8f7ba"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
