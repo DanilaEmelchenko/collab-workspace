@@ -11,7 +11,10 @@ router = APIRouter()
 @router.post("/", response_model=UserRead, status_code=201)
 async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_session)) -> UserRead:
     """Регистрация нового пользователя."""
-    return await create_user(db, user_in)
+    try:
+        return await create_user(db, user_in)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from None
 
 
 @router.get("/{user_id}", response_model=UserRead)
