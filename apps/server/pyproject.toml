@@ -44,8 +44,9 @@ select = [
 ignore = [
     "E501",   # line too long (управляется line-length)
     "B008",   # do not perform function calls in argument defaults (FastAPI Depends)
-    "B008",   # do not perform function calls in argument defaults
-    "RUF002", # отключаем проверку на неоднозначные unicode-символы (т.к. пишем докстринги на русском)
+    "RUF001", # отключаем проверку на неоднозначные unicode-символы в строках
+    "RUF002", # отключаем проверку на неоднозначные unicode-символы в докстрингах
+    "RUF003", # отключаем проверку на неоднозначные unicode-символы в комментариях
 ]
 
 # Автоматически исправлять ошибки
