@@ -122,9 +122,11 @@ collab-workspace/
 │   └── server/                 # FastAPI бэкенд (DDD)
 │       ├── app/
 │       │   ├── api/            # REST эндпоинты
+│       │   ├── crud/           # CRUD операции
 │       │   ├── ws/             # WebSocket обработчики
 │       │   ├── core/           # Конфигурация, безопасность
 │       │   ├── db/             # Модели базы данных
+│       │   ├── schemas/        # Pydantic схемы
 │       │   └── services/       # Бизнес-логика
 │       └── tests/
 │
@@ -134,6 +136,7 @@ collab-workspace/
 │
 ├── docker-compose.yml
 ├── .github/workflows/          # CI/CD
+├── .husky/                     # Git хуки
 └── README.md
 ```
 
@@ -149,8 +152,15 @@ npm run test:e2e      # E2E тесты (Playwright)
 # Backend tests
 ```bash
 cd apps/server
-pytest             # Unit тесты
-pytest --e2e       # Интеграционные тесты
+
+# Запуск всех тестов
+python -m pytest tests/ -v
+
+# Запуск с покрытием
+python -m pytest tests/ --cov=app --cov-report=term-missing
+
+# Запуск конкретного теста
+python -m pytest tests/api/test_users.py -v
 ```
 
 ### 🗺 Дорожная карта
