@@ -1,9 +1,8 @@
-# mypy: disable-error-code="attr-defined"
-"""initial database schema
+"""initial schema
 
-Revision ID: ed4a80e8f7ba
+Revision ID: d07fe4f38eb0
 Revises:
-Create Date: 2026-07-01 11:29:20.871746
+Create Date: 2026-07-17 12:56:34.603919
 
 """
 
@@ -14,7 +13,7 @@ import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision: str = "ed4a80e8f7ba"
+revision: str = "d07fe4f38eb0"
 down_revision: str | None = None
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
