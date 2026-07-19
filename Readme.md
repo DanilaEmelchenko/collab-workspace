@@ -161,6 +161,7 @@ python -m pytest tests/ --cov=app --cov-report=term-missing
 
 # Запуск конкретного теста
 python -m pytest tests/api/test_users.py -v
+python -m pytest tests/api/test_auth.py -v
 ```
 
 ### 🗺 Дорожная карта
