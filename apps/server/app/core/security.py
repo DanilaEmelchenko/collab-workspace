@@ -8,7 +8,6 @@ from app.core.config import settings
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Проверяет, совпадает ли пароль с хэшем."""
     result = bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
     return cast(bool, result)
 
@@ -30,7 +29,6 @@ def create_access_token(data: dict[str, Any], expires_delta: timedelta | None = 
         expire = datetime.now(UTC) + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
 
     to_encode.update({"exp": expire})
-
     encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
     return cast(str, encoded_jwt)
 
