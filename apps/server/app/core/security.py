@@ -1,5 +1,5 @@
 from datetime import UTC, datetime, timedelta
-from typing import Any, cast
+from typing import Any
 
 import bcrypt
 from jose import JWTError, jwt
@@ -8,15 +8,15 @@ from app.core.config import settings
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    result = bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
-    return cast(bool, result)
+    """Проверяет, совпадает ли пароль с хэшем."""
+    return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))  # type: ignore[no-any-return]
 
 
 def get_password_hash(password: str) -> str:
     """Хэширует пароль."""
     password_bytes = password.encode("utf-8")
     hashed = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
-    return cast(str, hashed.decode("utf-8"))
+    return hashed.decode("utf-8")  # type: ignore[no-any-return]
 
 
 def create_access_token(data: dict[str, Any], expires_delta: timedelta | None = None) -> str:
@@ -29,14 +29,13 @@ def create_access_token(data: dict[str, Any], expires_delta: timedelta | None = 
         expire = datetime.now(UTC) + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
 
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
-    return cast(str, encoded_jwt)
+
+    return jwt.encode(to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)  # type: ignore[no-any-return]
 
 
 def decode_access_token(token: str) -> dict[str, Any] | None:
     """Декодирует и проверяет JWT токен."""
     try:
-        payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
-        return cast(dict[str, Any], payload)
+        return jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])  # type: ignore[no-any-return]
     except JWTError:
         return None
