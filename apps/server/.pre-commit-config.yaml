@@ -21,6 +21,7 @@ repos:
         additional_dependencies:
           - types-passlib
           - redis==5.2.1
+          - types-pyjwt
         args: [--config-file=apps/server/pyproject.toml]
 
   # Базовые хуки

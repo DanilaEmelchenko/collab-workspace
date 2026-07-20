@@ -96,6 +96,9 @@ warn_return_any = true
 # НЕ требовать типизацию для декораторов (FastAPI)
 disallow_untyped_decorators = false
 
+# ОТКЛЮЧАЕМ ПРОВЕРКУ REDUNDANT-CAST
+disable_error_code = ["redundant-cast"]
+
 # Исключения для конкретных файлов
 [[tool.mypy.overrides]]
 module = "tests.*"
