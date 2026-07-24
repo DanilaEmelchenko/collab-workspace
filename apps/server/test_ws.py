@@ -21,9 +21,9 @@ async def simulate_user(user_name: str, token: str, doc_id: str) -> None:
         # Пытаемся получить сообщение от ДРУГОГО пользователя
         try:
             response = await asyncio.wait_for(ws.recv(), timeout=2.0)
-            print(f"[{user_name}] Получил: {response}")
+            print(f"[{user_name}] Получил: {response.decode('utf-8', errors='replace')}")
         except TimeoutError:
-            print(f"[{user_name}] Ничего не получил (это нормально, если он был один)")
+            print(f"[{user_name}] Ничего не получил")
 
 
 async def main() -> None:
