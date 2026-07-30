@@ -1,6 +1,7 @@
 import uuid
 from typing import cast
 
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -15,14 +16,12 @@ async def get_user(db: AsyncSession, user_id: str) -> User | None:
         user_uuid = uuid.UUID(user_id)
     except ValueError:
         return None
-    result = await db.get(User, user_uuid)
-    return cast(User | None, result)
+    result = await db.execute(select(User).where(User.id == user_uuid))
+    return cast(User | None, result.scalar_one_or_none())
 
 
 async def get_user_by_email(db: AsyncSession, email: str) -> User | None:
     """Получить пользователя по email."""
-    from sqlalchemy import select
-
     result = await db.execute(select(User).where(User.email == email))
     return cast(User | None, result.scalar_one_or_none())
 
