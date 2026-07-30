@@ -18,15 +18,6 @@ async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_sess
         raise HTTPException(status_code=400, detail=str(e)) from None
 
 
-@router.get("/{user_id}", response_model=UserRead)
-async def read_user(user_id: str, db: AsyncSession = Depends(get_session)) -> UserRead:
-    """Получение пользователя по ID."""
-    db_user = await get_user(db, user_id)
-    if not db_user:
-        raise HTTPException(status_code=404, detail="Пользователь не найден")
-    return db_user
-
-
 @router.get("/me", response_model=UserRead)
 async def read_current_user(
     authorization: str = Header(None), db: AsyncSession = Depends(get_session)
@@ -59,3 +50,12 @@ async def read_current_user(
         raise HTTPException(status_code=404, detail="Пользователь не найден")
 
     return user
+
+
+@router.get("/{user_id}", response_model=UserRead)
+async def read_user(user_id: str, db: AsyncSession = Depends(get_session)) -> UserRead:
+    """Получение пользователя по ID."""
+    db_user = await get_user(db, user_id)
+    if not db_user:
+        raise HTTPException(status_code=404, detail="Пользователь не найден")
+    return db_user
