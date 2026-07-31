@@ -1,9 +1,10 @@
-import { LoginForm } from '@/features/auth/ui/LoginForm';
+import { AuthShell } from '@/features/auth/ui/auth-shell';
+import { LoginForm } from '@/features/auth/ui/login-form';
 
 export default function LoginPage() {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100'>
+    <AuthShell>
       <LoginForm />
-    </div>
+    </AuthShell>
   );
 }

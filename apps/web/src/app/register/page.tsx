@@ -1,9 +1,10 @@
-import { RegisterForm } from '@/features/auth/ui/RegisterForm';
+import { AuthShell } from '@/features/auth/ui/auth-shell';
+import { RegisterForm } from '@/features/auth/ui/register-form';
 
 export default function RegisterPage() {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100'>
+    <AuthShell>
       <RegisterForm />
-    </div>
+    </AuthShell>
   );
 }

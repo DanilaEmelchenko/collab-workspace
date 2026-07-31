@@ -1,6 +1,7 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { Button } from '@/shared/ui/button';
 
 interface SidebarProps {
   userEmail: string;
@@ -8,40 +9,62 @@ interface SidebarProps {
 
 export function Sidebar({ userEmail }: SidebarProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = () => {
     localStorage.removeItem('auth_token');
     window.location.href = '/login';
   };
 
+  const navItem = (label: string, icon: string, href: string, active: boolean) => (
+    <button
+      onClick={() => router.push(href)}
+      className={`group flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-left text-sm font-medium transition-all duration-200 ${
+        active
+          ? 'bg-white text-[#0c1f1c] shadow-sm'
+          : 'text-white/60 hover:bg-white/5 hover:text-white hover:translate-x-0.5'
+      }`}
+    >
+      <span className='text-base transition-transform duration-200 group-hover:scale-110'>{icon}</span>
+      {label}
+    </button>
+  );
+
   return (
-    <aside className='w-64 bg-gray-50 border-r border-gray-200 h-screen flex flex-col'>
-      <div className='p-6 border-b border-gray-200'>
-        <h1 className='text-xl font-bold text-gray-800'>Collab Workspace</h1>
-        <p className='text-xs text-gray-500 mt-1 truncate' title={userEmail}>
-          {userEmail}
-        </p>
+    <aside className='flex h-screen w-72 flex-col bg-[#0c1f1c] text-white'>
+      <div className='border-b border-white/10 p-6'>
+        <div className='flex items-center gap-2.5'>
+          <span className='grid h-9 w-9 place-items-center rounded-lg bg-[#047857] font-display text-lg font-extrabold'>
+            C
+          </span>
+          <div className='leading-tight'>
+            <p className='font-display text-base font-bold tracking-tight'>Collab</p>
+            <p className='text-[11px] text-white/40'>Workspace</p>
+          </div>
+        </div>
       </div>
 
-      <nav className='flex-1 p-4 space-y-2'>
-        <button
-          onClick={() => router.push('/dashboard')}
-          className='w-full text-left px-4 py-2 rounded-lg bg-blue-50 text-blue-700 font-medium transition'
-        >
-          📄 Мои документы
-        </button>
-        <button className='w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition'>
-          ⚙️ Настройки
-        </button>
+      <nav className='flex-1 space-y-1 p-3'>
+        {navItem('Мои документы', '📄', '/dashboard', pathname === '/dashboard')}
+        {navItem('Настройки', '⚙️', '/dashboard', false)}
       </nav>
 
-      <div className='p-4 border-t border-gray-200'>
-        <button
+      <div className='border-t border-white/10 p-4'>
+        <div className='mb-3 flex items-center gap-3 rounded-xl bg-white/5 px-3 py-2.5'>
+          <span className='grid h-8 w-8 place-items-center rounded-full bg-[#047857] text-xs font-bold uppercase'>
+            {userEmail.charAt(0)}
+          </span>
+          <span className='truncate text-xs text-white/70' title={userEmail}>
+            {userEmail}
+          </span>
+        </div>
+        <Button
+          variant='ghost'
           onClick={handleLogout}
-          className='w-full text-left px-4 py-2 rounded-lg text-red-600 hover:bg-red-50 transition font-medium'
+          className='w-full justify-start text-white/60 hover:bg-white/5 hover:text-white'
         >
           🚪 Выйти
-        </button>
+        </Button>
       </div>
     </aside>
   );
