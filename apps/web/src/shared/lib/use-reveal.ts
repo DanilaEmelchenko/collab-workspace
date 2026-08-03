@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export function useReveal<T extends HTMLElement = HTMLDivElement>() {
+export function useReveal<T extends HTMLElement = HTMLDivElement>(): [React.RefObject<T | null>, boolean] {
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -26,5 +26,5 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     return () => observer.disconnect();
   }, []);
 
-  return { ref, visible };
+  return [ref, visible];
 }

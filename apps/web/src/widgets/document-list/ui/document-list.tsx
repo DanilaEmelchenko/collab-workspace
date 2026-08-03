@@ -2,15 +2,14 @@
 
 import type { Document } from '@/entities/document/model';
 import { formatRelative } from '@/shared/lib/time';
-import { Button } from '@/shared/ui/button';
 
 interface DocumentListProps {
   documents: Document[];
-  onCreate: () => void;
   onOpen: (id: string) => void;
+  onEmptyAction?: () => void;
 }
 
-export function DocumentList({ documents, onCreate, onOpen }: DocumentListProps) {
+export function DocumentList({ documents, onOpen, onEmptyAction }: DocumentListProps) {
   if (documents.length === 0) {
     return (
       <div className='relative overflow-hidden rounded-3xl border border-dashed border-[#D8D4C7] bg-[#FBFAF6]/60 p-14 text-center'>
@@ -21,25 +20,22 @@ export function DocumentList({ documents, onCreate, onOpen }: DocumentListProps)
         <p className='mx-auto mt-2 max-w-sm text-sm text-[#57534A] text-balance'>
           Создай первый документ и открой его в нескольких вкладках, чтобы увидеть магию совместного редактирования.
         </p>
-        <div className='mt-7 flex justify-center'>
-          <Button onClick={onCreate}>+ Создать документ</Button>
-        </div>
+        {onEmptyAction && (
+          <div className='mt-7 flex justify-center'>
+            <button
+              onClick={onEmptyAction}
+              className='inline-flex items-center gap-2 rounded-xl bg-[#047857] px-5 py-2.5 text-white font-medium shadow-sm transition-all duration-200 hover:bg-[#065f46] hover:shadow-md hover:-translate-y-0.5 active:scale-[0.97]'
+            >
+              + Создать документ
+            </button>
+          </div>
+        )}
       </div>
     );
   }
 
   return (
     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3'>
-      <button
-        onClick={onCreate}
-        className='group flex min-h-[168px] flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#D8D4C7] text-[#57534A] transition-all duration-200 hover:border-[#047857] hover:bg-[#047857]/5 hover:text-[#047857]'
-      >
-        <span className='text-3xl transition-transform duration-200 group-hover:scale-110 group-hover:rotate-90'>
-          +
-        </span>
-        <span className='text-sm font-medium'>Новый документ</span>
-      </button>
-
       {documents.map((doc) => (
         <button
           key={doc.id}
