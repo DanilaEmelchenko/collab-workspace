@@ -6,7 +6,6 @@ import { createDocument, fetchMyDocuments } from '@/entities/document/api';
 import type { Document } from '@/entities/document/model';
 import { fetchCurrentUser } from '@/entities/user/api';
 import { CreateDocumentModal } from '@/features/create-document/ui/create-document-modal';
-import { useReveal } from '@/shared/lib/use-reveal';
 import { DocumentList } from '@/widgets/document-list/ui/document-list';
 import { Sidebar } from '@/widgets/sidebar/ui/Sidebar';
 
@@ -24,8 +23,6 @@ export default function DashboardPage() {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [headRef, headVisible] = useReveal<HTMLDivElement>();
-  const [bodyRef, bodyVisible] = useReveal<HTMLDivElement>();
 
   useEffect(() => {
     const token = localStorage.getItem('auth_token');
@@ -71,7 +68,7 @@ export default function DashboardPage() {
       <main className='dot-grid relative flex-1 overflow-y-auto'>
         <div className='ambient absolute inset-0' />
         <div className='relative z-10 mx-auto max-w-5xl px-8 py-12'>
-          <div ref={headRef} className={`reveal ${headVisible ? 'is-visible' : ''}`}>
+          <div>
             <div className='flex items-start justify-between gap-4'>
               <div className='flex-1'>
                 <p className='text-sm font-medium text-[#047857]'>{greeting()}</p>
@@ -92,7 +89,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div ref={bodyRef} className={`reveal mt-10 ${bodyVisible ? 'is-visible' : ''}`}>
+          <div className='mt-10'>
             <DocumentList
               documents={documents}
               onOpen={(id) => router.push(`/documents/${id}`)}
