@@ -1,5 +1,5 @@
 'use client';
-
+/*
 import { useState } from 'react';
 
 export function RegisterForm() {
@@ -86,3 +86,4 @@ export function RegisterForm() {
     </form>
   );
 }
+*/

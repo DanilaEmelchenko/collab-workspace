@@ -1,5 +1,5 @@
 'use client';
-
+/*
 import { useEffect, useRef, useState } from 'react';
 
 export function useReveal<T extends HTMLElement = HTMLDivElement>(): [React.RefObject<T | null>, boolean] {
@@ -28,3 +28,4 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(): [React.RefO
 
   return [ref, visible];
 }
+*/

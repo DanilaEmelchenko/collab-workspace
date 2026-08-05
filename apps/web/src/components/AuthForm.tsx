@@ -1,5 +1,5 @@
 'use client';
-
+/*
 import { useState } from 'react';
 
 export default function AuthForm() {
@@ -75,3 +75,4 @@ export default function AuthForm() {
     </form>
   );
 }
+*/
